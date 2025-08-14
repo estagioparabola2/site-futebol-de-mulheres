@@ -1,0 +1,252 @@
+:root {
+    --primary-color-roxo: #007bff;
+    --secondary-color: #ffd700;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+}
+
+/* Cabeçalho */
+.header-title {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../../../Logo/futebol_F.jpg');
+    background-size: cover;
+    background-position: bottom;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.header-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.header-title p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Layout de Artigos - GRID com 5 colunas */
+.row {
+    display: grid;
+    /* grid-template-columns: repeat(5, 1fr); */
+    gap: 20px;
+    padding: 40px;
+    /* margin: 0 auto; */
+    box-sizing: border-box;
+}
+
+/* Cartões de artigo */
+.article-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+    /* Espaço para o link "Leia mais" */
+}
+
+.article-section p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    /* faz o texto ocupar espaço flexível */
+    flex-grow: 1;
+}
+
+.article-title {
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.institution {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.article-link {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color-roxo);
+    text-decoration: none;
+    position: absolute;
+    bottom: 27px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 15px;
+    margin: 0;
+
+}
+
+.article-link:hover {
+    text-decoration: underline;
+}
+
+/* Badge de categoria */
+.category-badge {
+    display: inline-block;
+    background-color: var(--primary-color-roxo);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+/* Filtros */
+.form-control,
+.form-select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Paginação */
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.page-numbers {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color-roxo);
+    color: white;
+    border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.back-to-top {
+    display: inline-block;
+    background-color: var(--primary-color-roxo);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 20px;
+}
+
+.rowDiferenca {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    /* padding: 40px; */
+}
+
+.rowSalarial {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 1600px) {
+    .row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rowSalarial {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rowDiferenca {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .rowSalarial {
+        grid-template-columns: 1fr;
+    }
+
+    .rowDiferenca {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

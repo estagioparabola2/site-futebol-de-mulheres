@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Notícias - FUTEBOL FEMININO</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/Projeto_de_estagio_parabola/Site_Feminio/Destaques/NoticiEstilo.css">
+    <link rel="stylesheet" href="/Projeto_de_estagio_parabola/Site_Feminio/estilo.css">
+    <link rel="stylesheet" href="/Projeto_de_estagio_parabola/Site_Feminio/ArtigEstilo.css">
+    
+</head>
+
+<body>
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- Menu de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-dark sticky-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Projeto_de_estagio_parabola/Site_Feminio/Index.html">
+                    <img src="/Projeto_de_estagio_parabola/Site_Feminio/Logo/Logo_Brasil_Futebol.png" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav navbar-nav navbar-right nav-links">
+                    <li><a href="/Projeto_de_estagio_parabola/Site_Feminio/Index.html">PÁGINA PRINCIPAL</a></li>
+                    <li class="active"><a href="noticias.html">NOTÍCIAS</a></li>
+                    <li><a href="/Projeto_de_estagio_parabola/Site_Feminio/eventos.html">EVENTOS</a></li>
+                    <li><a href="/Projeto_de_estagio_parabola/Site_Feminio/info.html">INFORMAÇÕES</a></li>
+                    <li><a href="/Projeto_de_estagio_parabola/Site_Feminio/sobre.html">CONTATO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Página de Notícias -->
+    <div class="news-header">
+        <div class="container">
+            <h1>ÚLTIMAS NOTÍCIAS</h1>
+            <p>Tudo sobre o futebol feminino no Brasil e no mundo</p>
+        </div>
+    </div>
+
+    <!-- Filtros por Categoria -->
+    <div class="container">
+        <div class="news-categories">
+            <button class="category-btn active">Todas</button>
+            <button class="category-btn">Seleção Brasileira</button>
+            <button class="category-btn">Campeonato Brasileiro</button>
+            <button class="category-btn">Internacional</button>
+            <button class="category-btn">Copa do Mundo</button>
+            <button class="category-btn">Olímpiadas</button>
+            <button class="category-btn">Entrevistas</button>
+        </div>
+    </div>
+
+    <!-- Listagem de Notícias -->
+    <div class="container">
+        <div class="news-container">
+            <!-- Notícia 1 -->
+            <article class="news-article">
+                <img src="https://conteudo.imguol.com.br/c/esporte/9b/2023/07/24/marta-comemora-gol-pela-selecao-brasileira-no-jogo-contra-a-panama-1690215803170_v2_900x506.jpg" alt="Marta comemora gol" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">24 DE JULHO DE 2023</span>
+                    <h3 class="news-title">Marta marca dois gols na goleada do Brasil sobre o Panamá</h3>
+                    <p class="news-excerpt">A Rainha do Futebol mostrou mais uma vez sua classe em partida preparatória para a Copa do Mundo Feminina.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+
+            <!-- Notícia 2 -->
+            <article class="news-article">
+                <img src="https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2023/07/selecao-brasileira-feminina.jpg" alt="Seleção Brasileira" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">20 DE JULHO DE 2023</span>
+                    <h3 class="news-title">CBF anuncia datas e locais dos amistosos da Seleção Feminina</h3>
+                    <p class="news-excerpt">Jogos preparatórios acontecerão em três capitais brasileiras antes da Copa do Mundo.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+
+            <!-- Notícia 3 -->
+            <article class="news-article">
+                <img src="https://www.lance.com.br/files/article_main/uploads/2023/07/25/64bfa9a5e5d4a.jpeg" alt="Corinthians x Palmeiras" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">18 DE JULHO DE 2023</span>
+                    <h3 class="news-title">Corinthians vence Palmeiras e abre vantagem no Brasileirão Feminino</h3>
+                    <p class="news-excerpt">Timão vence clássico por 2-1 e segue na liderança do campeonato nacional.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+
+            <!-- Notícia 4 -->
+            <article class="news-article">
+                <img src="https://midias.correiobraziliense.com.br/_midias/jpg/2023/07/22/675x450/1_inglaterra_x_brasil_feminino-26880463.jpg" alt="Inglaterra x Brasil" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">15 DE JULHO DE 2023</span>
+                    <h3 class="news-title">Brasil perde para a Inglaterra em amistoso disputado em Londres</h3>
+                    <p class="news-excerpt">Seleção feminina sofre revés contra as atuais campeãs europeias em jogo-teste.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+
+            <!-- Notícia 5 -->
+            <article class="news-article">
+                <img src="https://s2-ge.glbimg.com/3h0U5Jx0TvZ1UJjD3Z3y3q3n0dM=/0x0:2048x1365/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2023/d/c/5x0q3kR2GXZ5QmU6Xz0w/futebol-feminino-flamengo-x-corinthians.jpg" alt="Flamengo x Corinthians" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">12 DE JULHO DE 2023</span>
+                    <h3 class="news-title">Flamengo anuncia contratação de jogadora da seleção colombiana</h3>
+                    <p class="news-excerpt">Clube rubro-negro reforça elenco para a disputa da Libertadores Feminina.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+
+            <!-- Notícia 6 -->
+            <article class="news-article">
+                <img src="https://www.otempo.com.br/image/contentid/policy:1.2792460:1689715481/image.jpg" alt="Projeto social" class="news-image">
+                <div class="news-content">
+                    <span class="news-date">8 DE JULHO DE 2023</span>
+                    <h3 class="news-title">Projeto em SP revela novas promessas do futebol feminino</h3>
+                    <p class="news-excerpt">Iniciativa social já formou mais de 50 atletas para times profissionais.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Paginação -->
+        <div class="pagination">
+            <a href="#" class="page-link">← Anterior</a>
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">4</a>
+            <a href="#" class="page-link">Próxima →</a>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Sobre Nós</h3>
+                    <p>O Portal de Futebol Feminino é dedicado a promover e divulgar o futebol praticado por mulheres no Brasil e no mundo.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="menu.html">Página Principal</a></li>
+                        <li><a href="noticias.html">Notícias</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="info.html">Informações Gerais</a></li>
+                        <li><a href="sobre.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 Portal de Futebol Feminino. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidades da página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtro por categoria
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    // Aqui iria o código para filtrar as notícias
+                });
+            });
+            
+            // Menu mobile (simplificado)
+            const navbarToggle = document.querySelector('.navbar-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if(navbarToggle && navLinks) {
+                navbarToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>FUTEBOL FEMININO - Portal Completo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Inter:wght@100..900&family=Jura:wght@300..700&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="SiteClientes/estilo.css">
+    <!-- <link rel="stylesheet" href="SiteClientes/ProAcademica/Artigos/ArtigEstilo.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="Index.html">
+                    <img src="Logo/Instituto_Federal_do_Pará_-_Marca_Vertical_2015.svg" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav-links">
+                    <li class="active"><a href="Index.html">PÁGINA PRINCIPAL</a></li>
+
+                    <li>
+                        <a class="titulo" href="#">PRODUÇÃO ACADÊMICA</a>
+                        <ul class="submenu">
+                            <li><a href="SiteClientes/ProAcademica/Artigos/artigos.html">ARTIGO</a></li>
+                            <li><a href="SiteClientes/ProAcademica/Dissertacoes/dissertacao.html">MESTRADO</a>
+                            </li>
+                            <li><a href="SiteClientes/ProAcademica/Doutorados/doutorado.html">DOUTORADO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="SiteClientes/Eventos/eventos.html">NOTÍCIAS</a></li>
+                    <li><a href="SiteClientes/Mapa/mapas.html">MAPA</a></li>
+                    <li><a href="SiteClientes/Informacoes/info.html">SAIBA MAIS</a></li>
+                    <!-- <li><a href="sobre.html">CONTATO</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Banner Principal -->
+    <div class="jumbotron">
+        <h1>FUTEBOL FEMININO BRASILEIRO</h1>
+        <p class="lead">Acompanhe tudo sobre a modalidade que mais cresce no país</p>
+    </div>
+
+    <!-- Carrossel de Destaques -->
+    <div class="container" style="margin-top: 30px;">
+        <!-- Carrossel -->
+        <div class="carousel">
+            <!-- Slides -->
+            <div class="carousel-inner" id="carousel-inner">
+                <!-- Slide 1 -->
+            </div>
+
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="carousel-indicators">
+                <button class="indicator active" data-slide-to="0"></button>
+                <button class="indicator" data-slide-to="1"></button>
+                <button class="indicator" data-slide-to="2"></button>
+                <button class="indicator" data-slide-to="3"></button>
+            </div>
+
+            <!-- Controles -->
+            <button class="carousel-control prev" aria-label="Anterior">‹</button>
+            <button class="carousel-control next" aria-label="Próximo">›</button>
+        </div>
+    </div>
+
+    <!-- Seção de Destaques -->
+    <div class="container" id="destaques" style="margin-top: 50px;">
+        <h2 class="section-title">DESTAQUES</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-users"></i>
+                    <h3>PIONEIRAS DO FUTEBOL E SEUS LEGADOS</h3>
+                    <p></p>
+                    <a href="Destaques/atletas.html" class="btn btn-primary">Ver perfil</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-users"></i>
+                    <h3>FUTEBOL DA MULHER AMAZÔNICA</h3>
+                    <p></p>
+                    <a href="Destaques/atletas.html" class="btn btn-primary">Ver perfil</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <i class="fas fa-users"></i>
+                    <h3>FUTEBOL DA INDÍGENA MULHER</h3>
+                    <p></p>
+                    <a href="Destaques/atletas.html" class="btn btn-primary">Ver perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galeria de Fotos -->
+    <div class="container" style="margin-top: 50px;">
+        <h2 class="section-title">GALERIA DE FOTOS</h2>
+        <div class="row" id="photos-container">
+            <div class="col-md-3 col-sm-6">
+                <a href="#" data-toggle="modal" data-target="#photoModal1">
+                    <img src="#" alt="Foto 1" class="img-responsive img-thumbnail"
+                        style="height: 200px; width: 100%; object-fit: cover; margin-bottom: 15px;">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#" data-toggle="modal" data-target="#photoModal2">
+                    <img src="#" alt="Foto 2" class="img-responsive img-thumbnail"
+                        style="height: 200px; width: 100%; object-fit: cover; margin-bottom: 15px;">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#" data-toggle="modal" data-target="#photoModal3">
+                    <img src="#" alt="Foto 3" class="img-responsive img-thumbnail"
+                        style="height: 200px; width: 100%; object-fit: cover; margin-bottom: 15px;">
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="#" data-toggle="modal" data-target="#photoModal4">
+                    <img src="#" alt="Foto 4" class="img-responsive img-thumbnail"
+                        style="height: 200px; width: 100%; object-fit: cover; margin-bottom: 15px;">
+                </a>
+            </div>
+        </div>
+        <div class="text-center" style="margin: 30px 0;">
+            <a href="Galeria_e_Foto/galeria.html" class="btn btn-primary btn-lg" target="_blank">Ver galeria
+                completa</a>
+        </div>
+    </div>
+
+    <!-- Modal para Fotos (exemplo) -->
+    <div class="modal fade" id="photoModal1" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="photoModalLabel1">Treino da Seleção Brasileira</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b" alt="Foto em tamanho maior"
+                        class="img-responsive">
+                </div>
+                <div class="modal-footer">
+                    <p>Seleção Brasileira em treino preparatório para a Copa do Mundo Feminina.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="footer-col">
+                    <h3>Sobre Nós</h3>
+                    <p>Este portal é dedicado a promover e divulgar os estudos acadêmicos sobre o futebol, de mulheres
+                        indígenas e não indígenas, assim como a sua prática.</p>
+                    <div class="social-icons">
+                        <a
+                            href="https://www.facebook.com/para.bolaacadfutebol?rdid=vO9iWWQ9uvTS12h9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A7ETQFw2N%2F#"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/PARA.BOLA_ALDEIA.DO.FUTEBOL/#"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="Index.html">Página Principal</a></li>
+                        <li><a href="SiteClientes/ProAcademica/Artigos/artigos.html">Artigos</a></li>
+                        <li><a href="SiteClientes/Eventos/eventos.html">Notícia</a></li>
+                        <li><a href="SiteClientes/Mapa/mapas.html">Mapa</a></li>
+                        <li><a href="SiteClientes/Informacoes/info.html">Saiba</a></li>
+                        <li><a href="login_admin/login.html">Painel Administrativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 - Brasil foi campeão da COPA AMÉRICA</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://rajiiuqbkptwnbuwdgvx.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJhamlpdXFia3B0d25idXdkZ3Z4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzMTA4NTUsImV4cCI6MjA1OTg4Njg1NX0.3Yc9IKmXM6AaceWlasAqdSVQSRhZTRXYzRQyGI1RucI';
+        window.supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    </script>
+
+        <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('links-menu');
+            menu.classList.toggle('active');
+        });
+
+        // Smooth scroll para o botão "voltar ao topo"
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <script src="SiteClientes/carrossel.js"></script>
+    <script src="Galeria_e_Foto/galeriaFoto.js"></script>
+    <!-- <script src="../assets/JS/supabase-client.js"></script> -->
+</body>
+
+</html>

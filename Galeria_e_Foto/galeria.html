@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Galeria de Foto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../Galeria_e_Foto/galeria.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container gallery-section">
+        <div class="gallery-header">
+            <h1 class="gallery-title">Galeria de Fotos</h1>
+            <div class="gallery-filter">Mas recientes</div>
+        </div>
+        
+        <div id="gallery-grid" class="gallery-grid">
+            <!-- Item 1 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1682686580391-615b4b7151b7" alt="Imagem 1">
+                <div class="gallery-caption">
+                    <h3>Imagem 1</h3>
+                    <p>Descrição da imagem</p>
+                </div>
+            </div>
+            
+            <div id="loading" class="loading">Carregando fotos...</div>
+        </div>
+        
+        <div class="gallery-pagination">
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Adiciona interação aos números de página
+        document.querySelectorAll('.page-number').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.page-number').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <script src="../assets/JS/supabase-client.js"></script>
+    <script src="../Galeria_e_Foto/galeriaFoto.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Atletas - Futebol Feminino</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/Projeto_de_estagio_parabola/Site_Feminio/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="atletasEstilo.css">
+    <link rel="stylesheet" href="../SiteClientes/estilo.css">
+</head>
+
+<body>
+    <!-- Menu de Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../SiteClientes/Index.html">
+                    <img src="../Logo/Instituto_Federal_do_Pará_-_Marca_Vertical_2015.svg" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav-links">
+                    <li class="active"><a href="../Index.html">PÁGINA PRINCIPAL</a></li>
+
+                    <li>
+                        <a class="titulo" href="#">PRODUÇÃO ACADÊMICA</a>
+                        <ul class="submenu">
+                            <li><a href="../SiteClientes/ProAcademica/Artigos/artigos.html">ARTIGOS</a></li>
+                            <li><a href="../SiteClientes/ProAcademica/Dissertacoes/dissertacao.html">DISSERTAÇÃO</a>
+                            </li>
+                            <li><a href="../SiteClientes/ProAcademica/Doutorados/doutorado.html">DOUTORADO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="../SiteClientes/Eventos/eventos.html">NOTÍCIAS</a></li>
+                    <li><a href="../SiteClientes/Mapa/mapas.html">MAPA</a></li>
+                    <li><a href="../SiteClientes/Informacoes/info.html">SAIBA MAIS</a></li>
+                    <!-- <li><a href="sobre.html">CONTATO</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Futebol Feminino</h1>
+            <p>Conheça as jogadoras que estão fazendo história no futebol brasileiro</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <!-- Filtros -->
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Pesquisar atletas...">
+            <select id="positionFilter">
+                <option value="">Todas as posições</option>
+                <option value="Goleira">Goleira</option>
+                <option value="Defensora">Defensora</option>
+                <option value="Meio-campista">Meio-campista</option>
+                <option value="Atacante">Atacante</option>
+            </select>
+            <select id="teamFilter">
+                <option value="">Todos os times</option>
+                <option value="Corinthians">Corinthians</option>
+                <option value="Palmeiras">Palmeiras</option>
+                <option value="Flamengo">Flamengo</option>
+                <option value="Seleção Brasileira">Seleção Brasileira</option>
+            </select>
+        </div>
+
+        <!-- Lista de atletas -->
+        <section class="players-grid" id="playersContainer">
+            <!-- Atletas serão inseridas aqui via JavaScript -->
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Sobre Nós</h3>
+                    <p>Este portal é dedicado a promover e divulgar os estudos acadêmicos sobre o futebol, de mulheres
+                        indígenas e não indígenas, assim como a sua prática.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="../../Index.html">Página Principal</a></li>
+                        <li><a href="artigos.html">Artigos</a></li>
+                        <li><a href="../../Eventos/eventos.html">Eventos</a></li>
+                        <li><a href="../../Informacoes/info.html">Informações Gerais</a></li>
+                        <li><a href="sobre.html">Contato</a></li>
+                        <li><a href="../../../login_admin/login.html">Painel Administrativo</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 Portal de Futebol Feminino. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('links-menu');
+            menu.classList.toggle('active');
+        });
+
+        // Dados das atletas
+        const players = [
+            {
+                id: 1,
+                name: "Marta Vieira da Silva",
+                position: "Atacante",
+                team: "Seleção Brasileira",
+                bio: "Considerada a melhor jogadora de futebol feminino de todos os tempos, eleita 6 vezes a melhor do mundo pela FIFA.",
+                image: src="../SiteClientes/img/transferir.jpg",
+                birthdate: "19/02/1986",
+                achievements: "6× Melhor Jogadora do Mundo, 2× Medalhista Olímpica"
+            },
+            {
+                id: 2,
+                name: "Formiga",
+                position: "Meio-campista",
+                team: "Seleção Brasileira",
+                bio: "Jogadora mais experiente da seleção brasileira, participou de 7 Olimpíadas e 7 Copas do Mundo.",
+                image: src="../SiteClientes/img/transferir (1).jpg",
+                birthdate: "03/03/1978",
+                achievements: "7× Participação em Olimpíadas, 7× Participação em Copas do Mundo"
+            },
+            {
+                id: 3,
+                name: "Debinha",
+                position: "Atacante",
+                team: "Kansas City Current",
+                bio: "Uma das principais atacantes da seleção brasileira, conhecida por sua velocidade e habilidade.",
+                image: src="../SiteClientes/img/transferir (2).jpg",
+                birthdate: "20/10/1991",
+                achievements: "Melhor Jogadora da Copa América 2018"
+            },
+            {
+                id: 4,
+                name: "Tamires",
+                position: "Defensora",
+                team: "Corinthians",
+                bio: "Lateral-esquerda de grande qualidade técnica e física, peça fundamental na seleção brasileira.",
+                image: src="../SiteClientes/img/transferir (3).jpg",
+                achievements: "Campeã da Libertadores 2019"
+            },
+            {
+                id: 5,
+                name: "Ludmila",
+                position: "Atacante",
+                team: "Atlético de Madrid",
+                bio: "Atacante veloz e técnica, uma das principais jogadoras brasileiras atuando no exterior.",
+                image: src="../SiteClientes/img/transferir (4).jpg",
+                achievements: "Campeã da Copa do Brasil 2017"
+            },
+            {
+                id: 6,
+                name: "Andressa Alves",
+                position: "Meio-campista",
+                team: "Corinthians",
+                bio: "Meia-atacante de grande qualidade técnica, com passagem por grandes clubes europeus.",
+                image: src="../SiteClientes/img/transferir (5).jpg",
+                achievements: "Campeã da Champions League Feminina"
+            },
+            {
+                id: 7,
+                name: "Letícia Izidoro",
+                position: "Goleira",
+                team: "Corinthians",
+                bio: "Uma das melhores goleiras do futebol feminino brasileiro, conhecida por suas defesas espetaculares.",
+                image: src="../SiteClientes/img/transferir (6).jpg",
+                achievements: "Melhor Goleira do Brasileirão 2018"
+            },
+            {
+                id: 8,
+                name: "Kerolin",
+                position: "Atacante",
+                team: "North Carolina Courage",
+                bio: "Jovem promessa do futebol feminino brasileiro, eleita a melhor jogadora do Brasileirão Feminino em 2021.",
+                image: src="../SiteClientes/img/transferir (7).jpg",
+                achievements: "Melhor Jogadora do Brasileirão 2021"
+            }
+        ];
+
+        // Função para renderizar as atletas
+        function renderPlayers(playersToRender) {
+            const container = document.getElementById('playersContainer');
+            container.innerHTML = '';
+
+            playersToRender.forEach(player => {
+                const playerCard = document.createElement('div');
+                playerCard.className = 'player-card';
+                playerCard.innerHTML = `
+                    <div class="player-image">
+                        <img src="${player.image}" alt="${player.name}">
+                    </div>
+                    <div class="player-info1">
+                        <h2>${player.name}</h2>
+                        <div class="player-meta">
+                            <span class="position">${player.position}</span>
+                            <span class="team">${player.team}</span>
+                        </div>
+                        <p class="player-bio">${player.bio}</p>
+                        <div class="player-details">
+                            <p><strong>Nascimento:</strong> ${player.birthdate}</p>
+                            <p><strong>Conquistas:</strong> ${player.achievements}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(playerCard);
+            });
+        }
+
+        // Função para filtrar as atletas
+        function filterPlayers() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const positionFilter = document.getElementById('positionFilter').value;
+            const teamFilter = document.getElementById('teamFilter').value;
+
+            const filteredPlayers = players.filter(player => {
+                const matchesSearch = player.name.toLowerCase().includes(searchTerm) ||
+                    player.bio.toLowerCase().includes(searchTerm);
+                const matchesPosition = positionFilter === '' || player.position === positionFilter;
+                const matchesTeam = teamFilter === '' || player.team === teamFilter;
+
+                return matchesSearch && matchesPosition && matchesTeam;
+            });
+
+            renderPlayers(filteredPlayers);
+        }
+
+        // Event listeners para os filtros
+        document.getElementById('searchInput').addEventListener('input', filterPlayers);
+        document.getElementById('positionFilter').addEventListener('change', filterPlayers);
+        document.getElementById('teamFilter').addEventListener('change', filterPlayers);
+
+        // Renderizar todas as atletas inicialmente
+        renderPlayers(players);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Eventos - Futebol Feminino</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../SiteClientes/Eventos/eventosEstilo.css">
+    <link rel="stylesheet" href="../../SiteClientes/ProAcademica/Artigos/ArtigEstilo.css">
+    <link rel="stylesheet" href="../../SiteClientes/estilo.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <!-- Barra de navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../../Index.html">
+                    <img src="../../Logo/Instituto_Federal_do_Pará_-_Marca_Vertical_2015.svg" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav-links">
+                    <li><a href="../../Index.html">PÁGINA PRINCIPAL</a></li>
+                    <li>
+                        <a class="titulo" href="#">PRODUÇÃO ACADÊMICA</a>
+                        <ul class="submenu">
+                            <li><a href="../ProAcademica/Artigos/artigos.html">ARTIGO</a></li>
+                            <li><a href="../ProAcademica/Dissertacoes/dissertacao.html">MESTRADO</a></li>
+                            <li><a href="../ProAcademica/Doutorados/doutorado.html">DOUTORADO</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="../Eventos/eventos.html">NOTÍCIAS</a></li>
+                    <li><a href="../Mapa/mapas.html">MAPA</a></li>
+                    <li><a href="../Informacoes/info.html">SAIBA MAIS</a></li>
+                    <!-- <li><a href="sobre.html">CONTATO</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Notícias de Futebol Feminino</h1>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <section class="event-section" id="article-eventos">
+            <!-- <article class="event-card">
+            <img src="https://womensfootballexpo.com/wp-content/uploads/2023/01/dario-2-scaled-e1710161572904.jpg" alt="CBF Academy - Futebol Feminino" class="event-image">
+            <h2>CBF Academy - Futebol Feminino</h2>
+            <p>Evento organizado pela Confederação Brasileira de Futebol com foco no desenvolvimento do futebol feminino, incluindo workshops, palestras e treinamentos para jogadoras, treinadoras e gestoras do esporte.</p>
+            <a href="https://www.cbf.com.br/cbf-academy" class="event-link" target="_blank">Visite a página do evento</a>
+            </article> -->
+
+            <!-- <article class="event-card">
+            <img src="../ImagensEventos/womens-football-expo.jpg" alt="Women's Football Expo" class="event-image">
+            <h2>Women's Football Expo</h2>
+            <p>O maior evento internacional dedicado exclusivamente ao futebol feminino, reunindo jogadoras, treinadoras, dirigentes e fãs para discutir o crescimento do esporte, igualdade de gênero e oportunidades no futebol feminino.</p>
+            <a href="https://womensfootballexpo.com/" class="event-link" target="_blank">Visite a página do evento</a>
+            </article>
+
+            <article class="event-card">
+            <img src="../ImagensEventos/fifa-womens-convention.jpg" alt="FIFA Women's Football Convention" class="event-image">
+            <h2>FIFA Women's Football Convention</h2>
+            <p>Evento anual realizado pela FIFA que reúne as principais lideranças do futebol feminino mundial para discutir estratégias de desenvolvimento, investimentos e o futuro do esporte.</p>
+            <a href="https://www.fifa.com/about-fifa/organisation/development/women" class="event-link" target="_blank">Visite a página do evento</a>
+            </article>
+
+            <article class="event-card">
+            <img src="../ImagensEventos/conmebol-seminario.jpg" alt="CONMEBOL - Seminário de Futebol Feminino" class="event-image">
+            <h2>CONMEBOL - Seminário de Futebol Feminino</h2>
+            <p>Evento organizado pela CONMEBOL para discutir o desenvolvimento do futebol feminino na América do Sul, com workshops técnicos e administrativos para federações e clubes.</p>
+            <a href="https://www.conmebol.com/" class="event-link" target="_blank">Visite a página do evento</a>
+            </article>
+
+            <article class="event-card">
+            <img src="../ImagensEventos/shefootball-summit.jpg" alt="SheFootball Summit" class="event-image">
+            <h2>SheFootball Summit</h2>
+            <p>Conferência internacional que aborda temas como liderança feminina no esporte, carreira de jogadoras, mídia e patrocínios no futebol feminino.</p>
+            <a href="https://shefootball.com/" class="event-link" target="_blank">Visite a página do evento</a>
+            </article>
+
+            <article class="event-card">
+            <img src="../ImagensEventos/festival-brasileiro.jpg" alt="Festival Brasileiro de Futebol Feminino" class="event-image">
+            <h2>Festival Brasileiro de Futebol Feminino</h2>
+            <p>Evento que reúne jogadoras, treinadoras e fãs para celebrar o futebol feminino brasileiro, com jogos demonstrativos, palestras e atividades de integração.</p>
+            <a href="https://www.instagram.com/festivalfutfem/" class="event-link" target="_blank">Visite a página do evento</a>
+            </article>
+
+            <article class="event-card">
+            <img src="../ImagensEventos/womens-icc.jpg" alt="Women's International Champions Cup" class="event-image">
+            <h2>Women's International Champions Cup</h2>
+            <p>Torneio internacional que reúne os melhores clubes de futebol feminino do mundo em uma competição de pré-temporada.</p>
+            <a href="https://womensicc.com/" class="event-link" target="_blank">Visite a página do evento</a>
+            </article> -->
+        </section>
+
+        <!-- Paginação -->
+        <div class="pagination">
+            <ul class="page-numbers" id="pagination">
+
+            </ul>
+        </div>
+        </div>
+
+    </main>
+
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="col-footer">
+                    <h3>Sobre Nós</h3>
+                    <p>Este portal é dedicado a promover e divulgar os estudos acadêmicos sobre o futebol, de mulheres indígenas e não indígenas, assim como a sua prática.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-footer">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="../../Index.html">Página Principal</a></li>
+                        <li><a href="../ProAcademica/Artigos/artigos.html">Artigos</a></li>
+                        <li><a href="../Eventos/eventos.html">Notícias</a></li>
+                        <li><a href="../Mapa/mapas.html">Mapa</a></li>
+                        <li><a href="../Informacoes/info.html">Saiba</a></li>
+                        <li><a href="../../login_admin/login.html">Painel Administrativo</a></li>
+                    </ul>
+                </div>
+                <div class="col-footer">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 - Brasil foi campeão da COPA AMÉRICA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão para voltar ao topo -->
+    <a href="#" class="back-to-top">
+        <span class="material-icons">arrow_upward</span>
+    </a>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script type="module" src="../../SiteClientes/Eventos/eventos.js"></script>
+    <script src="../../assets/JS/supabase-client.js"></script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('links-menu');
+            menu.classList.toggle('active');
+        });
+
+        // Smooth scroll para o botão "voltar ao topo"
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

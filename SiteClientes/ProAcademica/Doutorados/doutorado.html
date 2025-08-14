@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../ProAcademica/Artigos/ArtigEstilo.css">
+    <link rel="stylesheet" href="../../estilo.css">
+    <title>Doutorado - Futebol Feminino</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+    <!-- Barra de navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../../../Index.html">
+                    <img src="../../../Logo/Instituto_Federal_do_Pará_-_Marca_Vertical_2015.svg" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav-links">
+                    <li><a href="../../../Index.html">PÁGINA PRINCIPAL</a></li>
+                    <li>
+                        <a class="titulo" href="#">PRODUÇÃO ACADÊMICA</a>
+                        <ul class="submenu">
+                            <li><a href="../Artigos/artigos.html">ARTIGO</a></li>
+                            <li><a href="../Dissertacoes/dissertacao.html">MESTRADO</a></li>
+                            <li><a href="doutorado.html">DOUTORADO</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="../../Eventos/eventos.html">NOTÍCIAS</a></li>
+                    <li><a href="../../Mapa/mapas.html">MAPA</a></li>
+                    <li><a href="../../Informações/info.html">SAIBA MAIS</a></li>
+                    <!-- <li><a href="sobre.html">CONTATO</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <div class="header-title">
+        <div class="container">
+            <h1>Teses de Doutorado sobre Futebol Feminino</h1>
+            <p>Pesquisas acadêmicas publicadas sobre o futebol feminino no Brasil</p>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="container">
+
+        <!-- Artigos -->
+        <div class="row" id="article-artigos">
+
+        </div>
+
+        <!-- Paginação -->
+        <div class="pagination">
+            <ul class="page-numbers" id="pagination">
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="footer-col">
+                    <h3>Sobre Nós</h3>
+                    <p>Este portal é dedicado a promover e divulgar os estudos acadêmicos sobre o futebol, de mulheres
+                        indígenas e não indígenas, assim como a sua prática.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/para.bolaacadfutebol?rdid=vO9iWWQ9uvTS12h9&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1A7ETQFw2N%2F#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/PARA.BOLA_ALDEIA.DO.FUTEBOL/#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="../../../Index.html">Página Principal</a></li>
+                        <li><a href="../Artigos/artigos.html">Artigos</a></li>
+                        <li><a href="../../Eventos/eventos.html">Notícias</a></li>
+                        <li><a href="../../Mapa/mapas.html">Mapa</a></li>
+                        <li><a href="../../Informacoes/info.html">Saiba</a></li>
+                        <li><a href="../../../login_admin/login.html">Painel Administrativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 - Brasil foi campeão da COPA AMÉRICA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão para voltar ao topo -->
+    <a href="#" class="back-to-top">
+        <span class="material-icons">arrow_upward</span>
+    </a>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+
+    <script type="module" src="../../../SiteClientes/ProAcademica/Doutorados/doutorado.js"></script>
+    <script src="../../../assets/JS/supabase-client.js"></script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('links-menu');
+            menu.classList.toggle('active');
+        });
+
+        // Smooth scroll para o botão "voltar ao topo"
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

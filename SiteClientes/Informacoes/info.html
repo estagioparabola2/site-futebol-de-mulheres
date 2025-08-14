@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../SiteClientes/ProAcademica/Artigos/ArtigEstilo.css">
+    <link rel="stylesheet" href="../../SiteClientes/estilo.css">
+    <link rel="stylesheet" href="../../SiteClientes/Informacoes/inforEstilo.css">
+    <title>Mapa Regional do Brasil</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <!-- Barra de navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../../Index.html">
+                    <img src="../../Logo/Instituto_Federal_do_Pará_-_Marca_Vertical_2015.svg" alt="Logo">
+                </a>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <nav id="links-menu">
+                <ul class="nav-links">
+                    <li><a href="../../Index.html">PÁGINA PRINCIPAL</a></li>
+                    <li>
+                        <a class="titulo" href="#">PRODUÇÃO ACADÊMICA</a>
+                        <ul class="submenu">
+                            <li><a href="../../SiteClientes/ProAcademica/Artigos/artigos.html">REVISTA</a></li>
+                            <li><a href="../ProAcademica/Dissertacoes/dissertacao.html">MESTRADO</a></li>
+                            <li><a href="../ProAcademica/Doutorados/doutorado.html">DOUTORADO</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../Eventos/eventos.html">NOTÍCIAS</a></li>
+                    <li><a href="../Mapa/mapas.html">MAPA</a></li>
+                    <li class="active"><a href="info.html">SAIBA MAIS</a></li>
+                    <!-- <li><a href="sobre.html">CONTATO</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho 
+    <div class="header-title">
+        <div class="container">
+            <h1>O Futebol Feminino no Brasil</h1>
+            <p>Conheça a história, estatísticas e importância do futebol feminino no país</p>
+        </div>
+    </div>
+-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .timeline-wrapper {
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: 60px;
+            width: 4px;
+            background: linear-gradient(180deg, #059669 0%, #10b981 50%, #34d399 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.8s ease-out forwards;
+        }
+        
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 22px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border: 4px solid #10b981;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            z-index: 10;
+        }
+        
+        .timeline-content {
+            margin-left: 70px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }       
+        
+        .timeline-content img{
+            position: relative;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+           height: 300px;
+            width: 450px;
+            float: right;
+        }
+    
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-8px) translateX(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: #10b981;
+        }
+        
+        .year-tag {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #067751, #059669);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            letter-spacing: 0.5px;
+            text-shadow: #1f2937 4px 4px 10px;
+        }
+        
+        .event-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .event-description {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #059669, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .info-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .references-grid {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .reference-link {
+            color: #10b981;
+            text-decoration: none;
+            padding: 12px 16px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .reference-link:hover {
+            background: #dcfce7;
+            transform: translateX(8px);
+            color: #000000;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 12px;
+            }
+            
+            .timeline-content {
+                margin-left: 50px;
+                padding: 20px;
+            }
+            
+            .hero-section {
+                padding: 40px 20px;
+                margin-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="main-title">Um Pouco de História!</h1>
+            <p class="subtitle">As lutas e conquistas do futebol/Futsal feminino no Brasil</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-wrapper">
+            <div class="timeline-line"></div>
+            
+            <!-- 1894 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1894</div>
+                    <h3 class="event-title">Chegada do Futebol no Brasil</h3>
+                    <p class="event-description">O esporte chegou ao Brasil, trazido por Charles Miller.</p>
+                <img src="./img/image1952.png">
+                </div>
+            </div>
+
+            <!-- 1935 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1935</div>
+                    <h3 class="event-title">Chegada do Futsal no Brasil</h3>
+                    <p class="event-description">Futsal tem seus primeiros registros no Brasil por volta de 1935.</p>
+                    <img src="./img/image2007.png">
+                </div>
+            </div>
+
+            <!-- 1941 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1941</div>
+                    <h3 class="event-title">Proibição Legal</h3>
+                    <p class="event-description">Através do decreto-lei nº 3.199, o governo Getúlio Vargas proibiu as mulheres de praticar esportes considerados "incompatíveis com a sua natureza", incluindo o futebol, o que atrasou profundamente o desenvolvimento do futebol feminino no país.</p>
+                <img src="./img/image1941.png">
+                </div>
+            </div>
+
+            <!-- 1952 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1952</div>
+                    <h3 class="event-title">Primeiras Notícias sobre Futebol Feminino</h3>
+                    <p class="event-description">O jornal Última Hora noticia a prática do futebol feminino, apesar da proibição legal vigente.</p>
+                <img src="./img/image1952.png">
+                </div>
+            </div>
+
+            <!-- 1966 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1966</div>
+                    <h3 class="event-title">Pioneirismo em Palmares</h3>
+                    <p class="event-description">Em Palmares (PE), Lúcia Macedo organiza a primeira partida de futsal feminino da cidade, apesar da proibição e opinião pública.</p>
+                <img src="./img/image1966.png">
+                </div>
+            </div>
+
+            <!-- 1977 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1977</div>
+                    <h3 class="event-title">CPI da Mulher</h3>
+                    <p class="event-description">Maria Lenk* denuncia o preconceito e defende a participação feminina no esporte durante uma CPI.</p>
+                <img src="./img/image1977.png">
+                </div>
+            </div>
+
+            <!-- 1979 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1979</div>
+                    <h3 class="event-title">Fim da Proibição Legal</h3>
+                    <p class="event-description">Fim da proibição legal do futebol feminino no Brasil. A decisão foi formalizada pelo Conselho Nacional de Desportos (CND), que revogou o artigo do decreto que proibia o futebol feminino</p>
+                <img src="./img/image1979.png">
+                </div>
+            </div>
+
+            <!-- 1980 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1980</div>
+                    <h3 class="event-title">Legalização e Invisibilidade</h3>
+                    <p class="event-description">O período de legalização e invisibilidade do futebol de mulheres.</p>
+                <img src="./img/image1980.png">
+                </div>
+            </div>
+
+            <!-- 1983 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1983</div>
+                    <h3 class="event-title">Regulamentação</h3>
+                    <p class="event-description">Oficialmente regulamentados. Torneios femininos começam a surgir: Primeira competição oficial promovida pela CBF - a Taça Brasil de Futebol Feminino.</p>
+                <img src="./img/image1983-I.png">
+                </div>
+            </div>
+
+            <!-- 1991 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1991</div>
+                    <h3 class="event-title">Primeira Copa do Mundo</h3>
+                    <p class="event-description">O Brasil participou da primeira Copa do Mundo de Futebol Feminino, na China.</p>
+                <img src="./img/image1991.png">
+                </div>
+            </div>
+
+            <!-- 1996 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">1996</div>
+                    <h3 class="event-title">Estreia Olímpica</h3>
+                    <p class="event-description">Estreia do futebol feminino nas Olimpíadas (Atlanta – EUA), e o Brasil ficou em 4º lugar.</p>
+                <img src="./img/image1996.png">
+                </div>
+            </div>
+
+            <!-- Anos 2000 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2000</div>
+                    <h3 class="event-title">Protagonismo e Resistência</h3>
+                    <p class="event-description">Equipes femininas começam a se destacar, com jogadoras conciliando o esporte com outras profissões.</p>
+                <img src="./img/image1952.png">
+                </div>
+            </div>
+
+            <!-- 2004 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2004</div>
+                    <h3 class="event-title">Prata Olímpica</h3>
+                    <p class="event-description">Seleção feminina de futebol conquista a prata nas Olimpíadas de Atenas.</p>
+                <img src="./img/image2007-II.png">
+                </div>
+            </div>
+
+            <!-- 2007 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2007</div>
+                    <h3 class="event-title">Vice-Campeonato Mundial</h3>
+                    <p class="event-description">O time de futebol feminino foi vice-campeão mundial na China. Marta brilha e ganha fama internacional.</p>
+                <img src="./img/image2007-I.png">
+                </div>
+            </div>
+
+            <!-- 2008 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2008</div>
+                    <h3 class="event-title">Reconhecimento Internacional</h3>
+                    <p class="event-description">Cilene Pereira Paranhos se torna a primeira mulher negra a ser eleita a Melhor Jogadora de Futsal do Mundo, colocando o futsal feminino brasileiro no cenário internacional.</p>
+                <img src="./img/image2008.png">
+                </div>
+            </div>
+
+            <!-- 2009 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2009</div>
+                    <h3 class="event-title">Constatação do Futsal Escolar Feminino</h3>
+                    <p class="event-description">Primeira tentativa de quantificar e validar o futsal feminino escolar como realidade concreta no Brasil. Estudo presente no link "Revista brasileira de futsal e futebol"</p>
+                <img src="./img/image2009.png">
+                </div>
+            </div>
+
+            <!-- 2013-->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2013</div>
+                    <h3 class="event-title">1° Brasileirão feminino</h3>
+                    <p class="event-description">CBF organiza o primeiro campeonato nacional exclusivo para mulheres, reunindo 20 equipes. O Centro Olímpico conquista o título ao vencer o São José, marcando o início de uma nova fase para o futebol feminino no Brasil.</p>
+                <img src="./img/image2013.png">
+                </div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2016</div>
+                    <h3 class="event-title">Preconceito e Dificuldades</h3>
+                    <p class="event-description">Relatos de jogadoras revelam preconceito de gênero e falta de reconhecimento. Estudo realizado no artigo intitulado "Feminilidade e preconceito de gênero no futsal
+a perspectiva de atletas brasileiras"</p>
+<img src="./img/image2016.png">                
+</div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2016</div>
+                    <h3 class="event-title">Em congresso da CONMEBOL aprovado novo formato do Campeonato Brasileiro Feminino (criação das séries A1 e A2)</h3>
+                    <p class="event-description">A CONMEBOL aprovou uma resolução: a partir da temporada 2019, qualquer clube que quisesse participar da Copa Libertadores masculina ou da Copa Sul-Americana masculina deveria obrigatoriamente manter uma equipe feminina de futebol. A regra não exigia necessariamente que o time feminino estivesse na Série A1 — apenas que existisse, fosse inscrito em competições nacionais e estivesse em atividade.</p>
+                <img src="./img/image2016-I.png">
+                </div>
+            </div>
+
+            <!-- 2018 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2018</div>
+                    <h3 class="event-title">Profissionalização Ainda é Paradoxal</h3>
+                    <p class="event-description">Estudo revela que muitas jogadoras não conseguem viver apenas do futsal. Estudo presente nas referências, em "UFG - Pesquisas em Educação Física"</p>
+                <img src="./img/image2018.png">
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2020</div>
+                    <h3 class="event-title">Igualdade de Premiação</h3>
+                    <p class="event-description">A CBF anunciou igualdade de premiação entre as seleções masculina e feminina em competições como Copa do Mundo e Olimpíadas. A Série A1 e A2 do Campeonato Brasileiro Feminino se consolidaram como competições nacionais regulares.</p>
+                <img src="./img/image2020.png">
+                </div>
+            </div>
+
+            <!-- 2021 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2021</div>
+                    <h3 class="event-title">Formação de Atletas de Elite</h3>
+                    <p class="event-description">Intensificação do foco na formação de jogadoras da seleção brasileira de futsal feminino, criando ambientes esportivos de excelência.</p>
+                <img src="./img/image2021.png">
+                </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2023</div>
+                    <h3 class="event-title">Recorde de Audiência</h3>
+                    <p class="event-description">Na Copa do Mundo de futebol, os jogos atingiram mais de 43 milhões de espectadores no Brasil, sendo o jogo Brasil x França o jogo feminino mais assistido da história da TV brasileira.</p>
+                <img src="./img/image2023.png">
+                </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2024</div>
+                    <h3 class="event-title">Parceria Histórica</h3>
+                    <p class="event-description">O CBC (Comitê Brasileiro de Clubes) firma parceria histórica com a Liga Feminina de Futsal, representando um marco no fortalecimento e organização do esporte.</p>
+                <img src="./img/image2024.png">
+                </div>
+            </div>
+
+            <!-- 2025 - Copa América -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2025</div>
+                    <h3 class="event-title">10ª Copa América</h3>
+                    <p class="event-description">A seleção Brasileira de futebol feminino se tornou campeã da Copa América pela 9ª vez ao vencer a Colômbia por 5 x 4 nos pênaltis. Esta foi a 10ª edição da Copa América de futebol feminina, e apenas em 2006 o Brasil não foi campeão.</p>
+                <img src="./img/image2024-I.png">
+                </div>
+            </div>
+
+            <!-- 2025 - Copa do Mundo -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2025</div>
+                    <h3 class="event-title">1ª Copa do Mundo Feminina de Futsal</h3>
+                    <p class="event-description">A 1ª Copa do Mundo Feminina de Futsal da FIFA, a ser realizada em 21 de novembro, nas Filipinas.</p>
+                <img src="./img/image2025.png">
+                </div>
+            </div>
+
+            <!-- 2025 - Ranking -->
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="year-tag">2025</div>
+                    <h3 class="event-title">Liderança Mundial</h3>
+                    <p class="event-description">Brasil se manteve nº 1 do ranking mundial em futsal feminino.</p>
+                <img src="./img/image2025-I.png">
+                </div>
+            </div>
+        </div>
+
+        <!-- Nota sobre Maria Lenk -->
+        <div class="info-card">
+            <p class="text-gray-700 leading-relaxed mb-8">
+                <strong>*(1915-2007)</strong> foi uma nadadora brasileira pioneira no esporte, sendo a primeira sul-americana a competir em Jogos Olímpicos (Los Angeles 1932 e Berlim 1936). Ela também foi a primeira mulher a quebrar recordes mundiais na natação brasileira, nas provas de 200m e 400m peito em 1939. Além disso, foi uma das primeiras a utilizar o nado borboleta em competições.
+            </p>
+        </div>
+
+        <!-- Referências -->
+        <div class="info-card">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Referências</h3>
+            <div class="references-grid">
+                <a href="https://www.fifa.com/pt/tournaments/womens/futsalwomensworldcup/philippines-2025/articles/copa-mundo-feminina-futsal-fifa-2025" class="reference-link" target="_blank">FIFA - Copa do Mundo Feminina de Futsal 2025</a>
+                <a href="https://lume.ufrgs.br/handle/10183/245515" class="reference-link" target="_blank">UFRGS - Estudos sobre Futsal Feminino</a>
+                <a href="https://planetafutebolfeminino.com.br/evolucao-do-futebol-feminino-e-futsal-feminino/" class="reference-link" target="_blank">Planeta Futebol Feminino - Evolução do Futsal</a>
+                <a href="https://www.rbff.com.br/index.php/rbff/article/view/18" class="reference-link" target="_blank">Revista Brasileira de Futsal e Futebol</a>
+                <a href="https://lnfoficial.com.br/noticias/cbc-oficializa-parceria-historica-com-a-liga-feminina-de-futsal/" class="reference-link" target="_blank">Liga Nacional de Futsal - Parceria CBC</a>
+                <a href="https://revistas.ufg.br/fef/article/download/45075/pdf/217782" class="reference-link" target="_blank">UFG - Pesquisas em Educação Física</a>
+                <a href="https://doi.org/10.5007/2175-8042.2021.e81073" class="reference-link" target="_blank">Revista Motrivivência - Estudos do Esporte</a>
+                <a href="https://ge.globo.com/df/futebol/noticia/em-1966-lucia-macedo-organizou-a-primeira-partida-de-futsal-feminino-de-palmares-pe.ghtml" class="reference-link" target="_blank">Globo Esporte - História de Lúcia Macedo</a>
+                <a href="https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol_Feminino_de_2013" class="reference-link" target="_blank">Campeonato Brasileiro de Futebol Feminino de 2013</a>
+                <a href="https://www.futebolbrasil.com/futebol/futebol-feminino-proibicao-nunca-mais-a-virada-de-1979/" class="reference-link" target="_blank">Futebol Feminino: Proibição? Nunca Mais! A Virada de 1979</a>
+                <a href="https://revistas.ulusofona.pt/index.php/fluxoseriscos/article/view/5742" class="reference-link" target="_blank">Feminilidade e preconceito de gênero no futsal
+a perspectiva de atletas brasileiras</a>
+                <a href="https://ge.globo.com/futebol/noticia/montar-time-feminino-e-exigencia-para-equipes-da-serie-a-2019-veja-situacao-dos-clubes.ghtml" class="reference-link" target="_blank">Montar time feminino é exigência para equipes da Série A 2019; veja situação dos clubes</a>
+            </div>
+        </div>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96baf82ac782f63a',t:'MTc1NDYxMzcwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        <!-- Diferença Salarial -->
+        <section class="info-section">
+            <h2 class="section-title text-center mb-4">Diferença Salarial entre Futebol feminino/ masculino</h2>
+            <p class="text-center mb-4">A desigualdade salarial no futebol é enorme, tanto no Brasil quanto no mundo. As
+                principais causas são:</p>
+            <div class="rowDiferenca justify-content-center mb-4">
+                <div>
+                    <div class="card border-danger h-100" style="background-color: rgba(220,53,69,0.08);">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger mb-2"><i
+                                    class="fas fa-exclamation-triangle me-2"></i>Patrocínios e audiência</h5>
+                            <p class="card-text mb-0">O futebol masculino movimenta muito mais dinheiro em publicidade e
+                                TV.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card border-primary h-100" style="background-color: rgba(13,110,253,0.08);">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary mb-2"><i class="fas fa-building me-2"></i>Estrutura</h5>
+                            <p class="card-text mb-0">Clubes investem muito menos no feminino (muitas atletas ainda são
+                                semiprofissionais).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mb-4">Comparação Salarial (2024)</h3>
+            <div class="rowSalarial g-4">
+                <!-- Média em Clubes -->
+                <div>
+                    <div class="salary-card h-100">
+                        <div class="salary-header">
+                            <h5 class="mb-1">Média em Clubes</h5>
+                            <p class="mb-0">Série A1 vs. Série A</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="salary-value salary-feminino mb-2">
+                                <i class="fas fa-venus me-2"></i>R$ 3.000–R$ 15.000
+                            </div>
+                            <div class="salary-value salary-masculino mb-2">
+                                <i class="fas fa-mars me-2"></i>R$ 200.000–R$ 1.000.000+
+                            </div>
+                            <div class="salary-difference mb-0">
+                                Diferença: Até 3.000%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Jogadores de Elite -->
+                <div>
+                    <div class="salary-card h-100">
+                        <div class="salary-header">
+                            <h5 class="mb-1">Jogadores de Elite</h5>
+                            <p class="mb-0">Top performers</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="salary-value salary-feminino mb-2">
+                                <i class="fas fa-venus me-2"></i>R$ 15.000–R$ 30.000
+                            </div>
+                            <div class="salary-value salary-masculino mb-2">
+                                <i class="fas fa-mars me-2"></i>R$ 1mi –R$ 5 mi+
+                            </div>
+                            <div class="salary-difference mb-0">
+                                Diferença: Até 15.000%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Seleção Brasileira -->
+                <div>
+                    <div class="salary-card h-100">
+                        <div class="salary-header">
+                            <h5 class="mb-1">Seleção Brasileira</h5>
+                            <p class="mb-0">Prêmios por jogo</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="salary-value salary-feminino mb-2">
+                                <i class="fas fa-venus me-2"></i>~R$ 5.000–R$ 10.000
+                            </div>
+                            <div class="salary-value salary-masculino mb-2">
+                                <i class="fas fa-mars me-2"></i>~R$ 50.000–R$ 100.000
+                            </div>
+                            <div class="salary-difference mb-0">
+                                Diferença: 1000%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Atletas de Base -->
+                <div>
+                    <div class="salary-card h-100">
+                        <div class="salary-header">
+                            <h5 class="mb-1">Atletas de Base</h5>
+                            <p class="mb-0">Sub-20</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="salary-value salary-feminino mb-2">
+                                <i class="fas fa-venus me-2"></i>R$ 1.500–R$ 5.000
+                            </div>
+                            <div class="salary-value salary-masculino mb-2">
+                                <i class="fas fa-mars me-2"></i>R$ 10.000–R$ 50.000
+                            </div>
+                            <div class="salary-difference mb-0">
+                                Diferença: 900%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contratos de Patrocínio -->
+                <div>
+                    <div class="salary-card h-100">
+                        <div class="salary-header">
+                            <h5 class="mb-1">Contratos de Patrocínio</h5>
+                            <p class="mb-0">Top 3 atletas</p>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="salary-value salary-feminino mb-2">
+                                <i class="fas fa-venus me-2"></i>R$ 50.000–R$ 200.000/ano
+                            </div>
+                            <div class="salary-value salary-masculino mb-2">
+                                <i class="fas fa-mars me-2"></i>R$ 5mi –R$ 50 mi/ano
+                            </div>
+                            <div class="salary-difference mb-0">
+                                Diferença: Até 10.000%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Negros no Futebol -->
+        <div class="info-section">
+            <h2 class="section-title">👩🏾 Mulheres Negras no Futebol</h2>
+            <p>A história das mulheres negras no futebol brasileiro é marcada por resistência e invisibilidade. Mesmo
+                com a proibição oficial do futebol feminino até 1979, muitas mulheres negras continuaram jogando em
+                campos improvisados, enfrentando preconceito racial e de gênero. Embora figuras como
+                <strong>Formiga</strong>, <strong>Marta</strong> e <strong>Cristiane</strong> tenham alcançado destaque
+                internacional, elas ainda representam exceções dentro de um contexto de exclusão histórica e social.
+            </p>
+            <h3>🔗 Links úteis:</h3>
+            <ul>
+                <li><a href="https://ludopedio.org.br/arquibancada/a-trajetoria-da-mulher-negra-no-futebol-brasileiro/"
+                        target="_blank">
+                        A trajetória da mulher negra no futebol brasileiro</a></li>
+                <li><a href="https://observatorioracialfutebol.com.br/quem-conta-a-historia-das-negras-no-futebol/"
+                        target="_blank">
+                        Quem conta a história das negras no futebol?</a></li>
+                <li><a href="https://almapreta.com.br/sessao/cotidiano/racismo-futebol-feminino/" target="_blank">
+                        Racismo no futebol feminino é ‘ainda mais perverso’ e falta representatividade</a></li>
+                <li><a href="https://observatorioracialfutebol.com.br/cbf-lanca-programa-professoras-pretas/"
+                        target="_blank">
+                        CBF lança Programa ‘Professoras Pretas’</a></li>
+            </ul>
+        </div>
+
+        <!-- Futebol / Futsal -->
+        <div class="info-section">
+            <h2 class="section-title">⚽ Futebol / Futsal</h2>
+            <p>
+                Futebol e futsal compartilham a mesma essência do esporte, mas o futsal possui regras e
+                características próprias, como o tamanho reduzido de campo e a ênfase no controle de bola.
+                Verificar se ainda há relatos de preconceito com o futebol e futsal praticados por
+                mulheres e padrões determinados pela mídia, bem como avanços na divulgação do futebol e
+                futsal feminino, além de identificar quais motivações a sociedade oferece para a
+                prática dessas modalidades pelas mulheres.
+            </p>
+            <h3>🔗 Links úteis:</h3>
+            <ul>
+                <li><a href="https://diplomatique.org.br/as-transmissoes-do-futebol-de-mulheres-no-territorio-brasileiro/"
+                        target="_blank">As transmissões do futebol de mulheres – Le Monde Diplomatique</a></li>
+                <li><a href="https://epocanegocios.globo.com/futuro-do-trabalho/noticia/2023/08/menos-investimento-e-proibicao-os-desafios-enfrentados-pela-selecao-feminina-de-futebol-fora-de-campo.ghtml"
+                        target="_blank">Menos investimento e proibição – Época Negócios / BBC</a></li>
+                <li><a href="https://veja.abril.com.br/coluna/por-tras-dos-numeros/o-futebol-feminino-no-brasil-um-jogo-de-preconceitos-e-injusticas/"
+                        target="_blank">Um jogo de preconceitos e injustiças – VEJA</a></li>
+                <li><a href="https://agenciabrasil.ebc.com.br/esportes/noticia/2023-08/futsal-abre-portas-e-fomenta-o-futebol-de-meninas-e-mulheres-no-brasil/"
+                        target="_blank">Futsal abre portas e fomenta o futebol feminino – Agência Brasil</a></li>
+            </ul>
+        </div>
+
+        <!-- Futebol da Mulher Indígena -->
+        <div class="info-section">
+            <h2 class="section-title">🛖 Futebol da Mulher Indígena</h2>
+            <p> A participação das mulheres indígenas no futebol tem crescido significativamente nos últimos anos,
+                impulsionada por diversas iniciativas locais e nacionais que valorizam a cultura e promovem a inclusão.
+                Essas ações têm como objetivo fortalecer o protagonismo feminino dentro das comunidades indígenas,
+                oferecendo não apenas o esporte como forma de lazer, mas também como ferramenta de empoderamento,
+                visibilidade e resistência cultural.</p>
+            <p> Além de estimular a prática esportiva, os projetos voltados ao futebol da mulher indígena contribuem
+                para romper estigmas, incentivar a igualdade de gênero e criar oportunidades de desenvolvimento social e
+                educacional para meninas e mulheres dessas comunidades.</p>
+            <h3>🔗 Links úteis:</h3>
+            <ul>
+                <li><a href="https://www.diadodesafio.org.br/para-inspirar/mulheres-indigenas-driblam-barreiras-e-fazem-gols-conheca-as-xondarias-guarani/?utm_source=chatgpt.com"
+                        target="_blank">Mulheres indígenas driblam barreiras e fazem gols – Xondarias Guarani</a></li>
+                <li><a href="https://amazoniareal.com.br/mulher-joga-futebol-a-superacao-das-indigenas-do-time-hiwy/?utm_source=chatgpt.com"
+                        target="_blank">
+                        Superação das indígenas do time Hiwy (Manaus – AM)</a></li>
+                <li><a href="https://www.institutoclaro.org.br/cidadania/nossas-novidades/videos/futebol-feminino-sob-o-olhar-da-mulher-indigena/?utm_source=chatgpt.com"
+                        target="_blank">Futebol feminino sob o olhar da mulher indígena – Instituto Claro</a></li>
+                <li><a href="https://www.uol.com.br/ecoa/reportagens-especiais/futebol-em-aldeia-vira-ferramenta-de-empoderamento-para-mulheres-guaranis/?utm_source=chatgpt.com"
+                        target="_blank">Futebol em aldeia de SP vira ferramenta de empoderamento – Ecoa/UOL</a></li>
+                <li><a href="https://www.inctfutebol.com.br/futeboldemulheresind%C3%ADgenalgbtqiaeparal%C3%ADmpico?utm_source=chatgpt.com"
+                        target="_blank">Futebol de mulheres indígenas, paralímpico e LGBTQIA+ – INCT Futebol</a></li>
+                <li><a href="https://imaginingequality.globalfundforwomen.org/content/guerreiras-project?utm_source=chatgpt.com"
+                        target="_blank">Guerreira Project – Imagining Equality (Global Fund for Women)</a></li>
+                <li><a href="https://museudofutebol.org.br/exposicoes/jaragua-kunhangue-ougaa-o-jogo-das-mulheres-do-jaragua/"
+                        target="_blank">Jaraguá Kunhangue Ouga’a – O jogo das mulheres do Jaraguá</a></li>
+            </ul>
+        </div>
+
+        <!-- Competições Globais -->
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="footer-col">
+                    <h3>Sobre Nós</h3>
+                    <p>Este portal é dedicado a promover e divulgar os estudos acadêmicos sobre o futebol, de
+                        mulheres
+                        indígenas e não indígenas, assim como a sua prática.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="../../Index.html">Página Principal</a></li>
+                        <li><a href="../ProAcademica/Artigos/artigos.html">Artigos</a></li>
+                        <li><a href="../Eventos/eventos.html">Notícias</a></li>
+                        <li><a href="../Mapa/mapas.html">Mapa</a></li>
+                        <li><a href="../Informacoes/info.html">Saiba</a></li>
+                        <li><a href="../../login_admin/login.html">Painel Administrativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Assine nossa newsletter e receba as últimas notícias diretamente no seu e-mail.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <button type="submit" class="btn btn-warning">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 - Brasil foi campeão da COPA AMÉRICA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão para voltar ao topo -->
+    <a href="#" class="back-to-top">
+        <span class="material-icons">arrow_upward</span>
+    </a>
+
+    <!-- VLibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('links-menu');
+            menu.classList.toggle('active');
+        });
+
+        // Smooth scroll para o botão "voltar ao topo"
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

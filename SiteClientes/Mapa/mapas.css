@@ -1,0 +1,136 @@
+.mapa-section {
+    border-radius: 8px;
+    margin: 33px auto;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    max-width: 1200px;
+    color: #f7f7f7;
+}
+
+
+.container-mapas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+
+    /* background-color: #f0f0f0; */
+}
+
+.svg-map {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    max-height: 600px;
+}
+
+         svg circle:hover {
+                fill: #a51b0b;
+                border: #000000  6px solid;
+            }            
+            svg path:hover {
+                fill: #044068;
+            }
+/* Cabeçalho2 imfor mapa*/
+
+.header-title2 {
+    background: linear-gradient(rgba(133, 206, 138, 0.877), rgba(16, 75, 36, 0.685));;
+    background-size: cover;
+    background-position: bottom;
+    color: rgb(255, 255, 255);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.header-title2 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.header-title2 p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.container2 {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 992px) {
+    .mapa-section {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+        margin: 20px 1rem;
+    }
+
+    .mapa-section .mapa-logo {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+
+    }
+
+    .svg-map {
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    .container-mapas {
+        height: auto;
+        padding: 40px 0;
+    }
+}
+
+.mensagem-flutuante {
+    min-width: 220px;
+    max-width: 320px;
+    background: #fff;
+    border: 2px solid #585656;
+    border-radius: 5px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    padding: 16px 18px 12px 18px;
+    z-index: 9999;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    font-size: 15px;
+}
+
+.mensagem-flutuante h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #047800;
+    text-align: left;
+}
+
+#mensagem-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#mensagem-lista li {
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #394acb;
+    color: #fff;
+    margin: 0;
+    transition: background 0.2s;
+    word-break: break-word;
+}
+
+#mensagem-lista li:nth-child(even) {
+    background-color: #394acb;
+}
